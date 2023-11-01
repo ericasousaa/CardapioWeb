@@ -1,0 +1,88 @@
+body {
+    background-image: url("./public/background.png");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    font-family: "Titillium Web", serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+.header-navigation {
+    padding: 10px 15px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 1500px;
+    min-width: 400px;
+    #background-color: #f7f7f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    #box-shadow: 1px 1px 2px 0 #CCC;
+}
+
+.header-navigation .nav-logo {
+    width: 70px;
+}
+
+.header-navigation .container-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.header-navigation .btn {
+    border: 1px solid #EA2B1F;
+    background-color: transparent;
+    font-size: 15px;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px 0 #CCC;
+}
+
+.header-navigation .btn:hover {
+    background-color: #EA2B1F;
+    color: white;
+    transition: all 200ms ease-in-out;
+    box-shadow: none;
+}
+
+.header-navigation a {
+    font-size: 16px;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    background: linear-gradient(#EA2B1F, #EA2B1F) no-repeat center bottom;
+    background-size: 0 0;
+}
+
+.header-navigation a.active {
+    color: #EA2B1F;
+    background-size: 100% 2px;
+    transition: all 300ms ease-in-out;
+}
+
+.container-items {
+    padding: 20px 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 1500px;
+    min-width: 400px;
+    background-color: #f7f7f7;
+    box-shadow: 0 1px 4px 0 #ccc inset;
+    height: 65vh;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card-item {
+    width: 250px;
+    height: 250px;
+    box-shadow: 1px 1px 4px 0 #CCC;
+    border-radius: 15px;
+}
