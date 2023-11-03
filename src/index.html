@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Catalogo</title>
   <link rel="stylesheet" href="./style.css"/>
   <script src="./script.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +17,12 @@
   <div class="container-buttons">
     <a id="inicio" href="index.html" onclick="handleChangeRoute(event)">Inicio</a>
     <a id="sobre-nos" href="/sobre-nos" onclick="handleChangeRoute(event)">Sobre nós</a>
-    <button class="btn">
+    <a id="form" class="btn" href="form.html" onclick="handleChangeRoute(event)">
       Cadastrar item
-    </button>
+    </a>
   </div>
 </nav>
-<div class="container-items">
+<div id="catalog" class="container-items">
   <div class="card-item">
     <div>
       <h4></h4>

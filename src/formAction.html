@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Produto</title>
+  <link rel="stylesheet" href="./style.css"/>
+  <script src="./script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+<nav class="header-navigation">
+  <img alt="logo" class="nav-logo" src="./public/logo.png">
+  <div class="container-buttons">
+    <a id="inicio" href="index.html" onclick="handleChangeRoute(event)">Inicio</a>
+    <a id="sobre-nos" href="/sobre-nos" onclick="handleChangeRoute(event)">Sobre nós</a>
+    <a id="form" class="btn">
+      Cadastrar item
+    </a>
+  </div>
+</nav>
+<section class="section-form">
+  <form action="" class="container-form" onsubmit="registerProduct(event)">
+    <div id="bg-image-form" class="container-img-form">
+      <label>
+        <p class="btn-add-image"><span style="font-size: 35px; font-weight: 600" >+</span> Enviar Imagem</p>
+        <input type="file" accept="image" name="image" onchange="addImageRegister(event)" />
+      </label>
+      <a class="clear-image" onclick="addImageRegister(event)">
+        <p class="btn-remove-image"><span style="font-size: 35px; font-weight: 600" >-</span> Limpar</p>
+      </a>
+      <span class="line-border"></span>
+    </div>
+    <div class="container-inputs">
+      <label class="input-area">
+        Nome do Produto
+        <input name="name" placeholder="Digite o nome do produto"/>
+      </label>
+      <label class="input-area">
+        Valor do Produto
+        <input name="value" placeholder="Digite o valor do produto"/>
+      </label>
+    </div>
+    <div class="container-buttons-form">
+      <button class="btn-register">
+        Cadastrar
+      </button>
+    </div>
+  </form>
+</section>
+</body>
+</html>
