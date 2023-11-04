@@ -15,7 +15,7 @@
 <nav class="header-navigation">
   <img alt="logo" class="nav-logo" src="./public/logo.png">
   <div class="container-buttons">
-    <a id="inicio" href="index.html" onclick="handleChangeRoute(event)">Inicio</a>
+    <a id="index" href="index.html" onclick="handleChangeRoute(event)">Inicio</a>
     <a id="sobre-nos" href="/sobre-nos" onclick="handleChangeRoute(event)">Sobre nós</a>
     <a id="form" class="btn" href="form.html" onclick="handleChangeRoute(event)">
       Cadastrar item
@@ -23,10 +23,12 @@
   </div>
 </nav>
 <div id="catalog" class="container-items">
-  <div class="card-item">
-    <div>
-      <h4></h4>
-      <p></p>
+  <div id="card-product" class="card-item">
+    <div class="overlay">
+      <div class="container-info">
+        <h4 class="name-product"></h4>
+        <p class="value-product"></p>
+      </div>
     </div>
   </div>
 </div>

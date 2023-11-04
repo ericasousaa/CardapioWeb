@@ -26,22 +26,26 @@
   <form action="formAction.html" class="container-form" onsubmit="registerProduct(event)">
     <div id="bg-image-form" class="container-img-form">
       <label>
-        <p class="btn-add-image"><span style="font-size: 35px; font-weight: 600" >+</span> Enviar Imagem</p>
+        <p class="btn-add-image"><span style="font-size: 35px; font-weight: 600">+</span> Enviar Imagem</p>
         <input type="file" accept="image" name="image" onchange="addImageRegister(event)" />
+        <input type="hidden" name="url-image" />
       </label>
       <a class="clear-image" onclick="addImageRegister(event)">
         <p class="btn-remove-image"><span style="font-size: 35px; font-weight: 600" >-</span> Limpar</p>
       </a>
       <span class="line-border"></span>
+      <p id="error-image" class="error"></p>
     </div>
     <div class="container-inputs">
       <label class="input-area">
         Nome do Produto
-        <input name="name" placeholder="Digite o nome do produto"/>
+        <input name="name" type="text" placeholder="Digite o nome do produto"/>
+        <p id="error-name" class="error"></p>
       </label>
       <label class="input-area">
         Valor do Produto
-        <input name="value" placeholder="Digite o valor do produto"/>
+        <input name="value" type="number" placeholder="Digite o valor do produto"/>
+        <p id="error-value" class="error"></p>
       </label>
     </div>
     <div class="container-buttons-form">

@@ -81,10 +81,37 @@ body {
 }
 
 .card-item {
+    display: none;
     width: 250px;
     height: 250px;
     box-shadow: 1px 1px 4px 0 #CCC;
     border-radius: 15px;
+}
+
+.card-item .overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    background: linear-gradient(3deg, #B8A453 4.85%, #EAC36A 20.83%, rgba(231, 205, 102, 0.60) 30.2%, rgba(203, 182, 94, 0.10) 40.61%);
+}
+
+.container-info {
+    height: fit-content;
+    padding: 1rem 1rem .2rem 1rem;
+    color: white;
+}
+
+.card-item .name-product {
+    margin: 0;
+    font-size: 18px;
+}
+.card-item .value-product {
+    margin: 0;
+    text-align: right;
+    font-weight: 600;
 }
 
 .section-form {
@@ -113,7 +140,7 @@ body {
     place-items: center;
     height: 300px;
     position: relative;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 15px 15px 0 0;
 }
 
 .container-img-form .line-border {
@@ -193,6 +220,13 @@ body {
     padding: 10px 5px;
     border-radius: 7px;
     border: 1px solid #CCC;
+}
+
+.section-form .error {
+    display: none;
+    color: #EA2B1F;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .container-buttons-form {

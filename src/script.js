@@ -1,37 +1,55 @@
-const beforeSelected = 'inicio'
-//let params = getParameters();
+let catalog;
+const handlePages = {
+  index: () => {
+    listProducts()
+  }, formAction: () => {
+    const product = handleSaveData()
+    handleShow(product)
+  }, form: () => {
+    console.log('page')
+  }
+}
 
 const handleChangeRoute = (e) => {
-  const previousSelected = document.querySelector(`#${beforeSelected}`)
-  previousSelected.classList.remove(beforeSelected)
   const navSelected = document.querySelector(`#${e.target.id}`)
   navSelected.classList.toggle('active')
 }
 
-(function () {
+(async function () {
   const page = wherePage()
-  const navSelect = document.querySelector(`#${page}`)
+  let navSelect;
+  if (page === 'formAction') {
+    navSelect = document.querySelector(`#form`)
+  } else {
+    navSelect = document.querySelector(`#${page}`)
+  }
   navSelect.classList.add('active')
-  getParameters()
+
+  //Import StoreCatalog
+  await import('./store.js').then(({storeCatalog}) => {
+    catalog = storeCatalog
+  })
+
+  handlePages[page]()
 })()
 
-function addImageRegister (event) {
+function addImageRegister(event) {
   const backgroundImage = document.querySelector("#bg-image-form")
   const inputFile = document.querySelector("input[name='image']")
   const buttonImage = document.querySelector("#bg-image-form label")
   const buttonClearImage = document.querySelector("#bg-image-form .clear-image")
+  const inputURLFile = document.querySelector("input[name='url-image']")
   let file;
 
-  if(event.target?.files) {
+  if (event.target?.files) {
     file = event.target?.files[0];
   }
 
-  if(Boolean(file)) {
+  if (Boolean(file)) {
     const reader = new FileReader();
 
     reader.onload = function (e) {
-      const imageObject = new Image();
-
+      localStorage.setItem('image-product', e.target.result)
       buttonImage.style.display = "none"
       buttonClearImage.style.display = "block"
       backgroundImage.style.backgroundImage = `url(${e.target.result})`
@@ -39,6 +57,8 @@ function addImageRegister (event) {
     }
 
     reader.readAsDataURL(file)
+
+    inputURLFile.value = encodeURIComponent(URL.createObjectURL(file));
   } else {
     inputFile.files[0] = null
     buttonClearImage.style.display = "none"
@@ -59,7 +79,7 @@ function wherePage() {
     page = url.slice(lastIndexBar + 1, lastIndexDo ? lastIndexDo : indexDot)
   }
 
-  if(lastIndexDo) {
+  if (lastIndexDo) {
     page = page.split('.')[0]
   }
 
@@ -67,7 +87,6 @@ function wherePage() {
 }
 
 function getParameters() {
-  let params = [];
   let paramsObject = {};
   let url = window.location.href;
   let paramsStart = url.indexOf("?")
@@ -79,13 +98,90 @@ function getParameters() {
 
     params.forEach((param => {
       const [key, value] = param.split('=')
-      paramsObject[key] = value
+      paramsObject[key] = decodeURIComponent(value.replace(/\+/g, ' '))
     }))
     return paramsObject
   }
   return null
 }
 
-function registerProduct (event) {
-  console.log(event.target)
+function registerProduct(event) {
+  const fields = [{name: 'name', field: 'produto'}, {name: 'value', field: 'valor'}, {name: 'image', field: 'imagem'}]
+  let errors = []
+
+  fields.forEach(field => {
+    errors = []
+    const errorFieldElement = document.querySelector(`#error-${field.name}`)
+    if (event.target[field.name].value.length < 1) {
+      errorFieldElement.style.display = 'inline'
+      errorFieldElement.innerText = `O campo ${field.field} é obrigatorio`
+      errors.push(`O campo ${field.field} é obrigatorio`)
+    } else {
+      errorFieldElement.style.display = 'none'
+      errorFieldElement.innerText = ''
+    }
+  })
+
+  if (errors.length > 0) {
+    event.preventDefault()
+  }
+
+}
+
+function handleSaveData () {
+  let id;
+  const params = getParameters()
+
+  if(!params?.id) {
+    // Set Product
+    let imgURL = localStorage.getItem('image-product')
+    id = catalog.setCatalog({...params, 'url-image': imgURL})
+
+    const url = new URL(window.location.href)
+    url.searchParams.set('id', id)
+
+    window.history.replaceState({}, document.title, url.toString());
+  } else {
+    id = params.id
+  }
+
+  //return product data
+  return catalog.getProduct(id)
+}
+
+function handleShow(product) {
+  const backgroundImage = document.querySelector('#bg-image-form')
+
+  const fields = ['name', 'value']
+
+  if(product['url-image']?.length) {
+    backgroundImage.style.backgroundImage = `url(${product['url-image']})`
+    backgroundImage.style.backgroundSize = "cover"
+    backgroundImage.style.backgroundPosition = "center"
+  }
+
+  fields.forEach(field => {
+    document.querySelector(`input[name='${field}']`).value = product[field]
+  })
+}
+
+function listProducts() {
+  const cardOriginal = document.querySelector('#card-product')
+  const elementoPai = document.querySelector('#catalog')
+
+  const products = catalog.getCatalog()
+
+  for (let key in products) {
+    const product = products[key]
+    const cardClone = cardOriginal.cloneNode(true)
+    cardClone.style.display = 'initial'
+    cardClone.style.backgroundImage = `url(${product['url-image']})`
+    cardClone.style.backgroundSize = 'cover'
+    cardClone.style.backgroundPosition = 'center'
+
+    cardClone.querySelector('.name-product').innerText = product.name
+    cardClone.querySelector('.value-product').innerText = `R$ ${product.value}`
+
+    elementoPai.appendChild(cardClone)
+  }
 }

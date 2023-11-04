@@ -1,25 +1,43 @@
 export const storeCatalog = (function () {
-  let store = []
+  let store = {}
+  let currentProduct = {}
 
-  function createInstance() {
-    return [];
+  if(localStorage.getItem('catalog')) {
+    store = JSON.parse(localStorage.getItem('catalog'))
   }
 
   return {
-    getInstance: function () {
+    getCatalog: function () {
       if (localStorage.getItem('catalog')) {
-        store = localStorage.getItem('catalog')
+        store = JSON.parse(localStorage.getItem('catalog'))
       }
 
       return store;
     },
-    setCatalog: function (data, index) {
-      if (index != null && !isNaN(index)) {
-        store[index] = data
+    getProduct: function (id) {
+      return store[id]
+    },
+    setCatalog: function (data) {
+      let dataTreated = data;
+
+      if(!dataTreated?.id) {
+        let id = Math.ceil(Math.random() * 5000)
+
+        do {
+          id = Math.ceil(Math.random() * 5000)
+        } while (store[id])
+
+        dataTreated = {...data, id: id}
       }
 
-      store.push(data)
-      localStorage.setItem('catalog', store)
+      store[dataTreated.id] = dataTreated
+
+      localStorage.setItem('catalog', JSON.stringify(store))
+
+      return dataTreated.id
+    },
+    setProduct: function (data) {
+      currentProduct = data
     }
   };
 })();
