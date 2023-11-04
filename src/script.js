@@ -6,7 +6,15 @@ const handlePages = {
     const product = handleSaveData()
     handleShow(product)
   }, form: () => {
-    console.log('page')
+    window.addEventListener('beforeunload', (event) => {
+      event.preventDefault()
+
+      event.returnValue = "Tem certeza que deseja sair? Perdará os dados inseridos"
+    })
+    window.addEventListener('unload', () => {
+      window.removeEventListener('beforeunload')
+      window.removeEventListener('unload')
+    })
   }
 }
 
