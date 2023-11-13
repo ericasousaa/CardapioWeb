@@ -8,8 +8,6 @@ const handlePages = {
   }, form: () => {
     window.addEventListener('beforeunload', (event) => {
       event.preventDefault()
-
-      event.returnValue = "Tem certeza que deseja sair? Perdará os dados inseridos"
     })
     window.addEventListener('unload', () => {
       window.removeEventListener('beforeunload')
@@ -38,7 +36,9 @@ const handleChangeRoute = (e) => {
     catalog = storeCatalog
   })
 
-  handlePages[page]()
+  if (handlePages[page])
+    handlePages[page]()
+
 })()
 
 function addImageRegister(event) {
@@ -128,6 +128,16 @@ function registerProduct(event) {
       errorFieldElement.style.display = 'none'
       errorFieldElement.innerText = ''
     }
+
+    if(field.name === 'value') {
+      const verify = verificarLetras(event.target[field.name].value)
+
+      if(verify) {
+        errorFieldElement.style.display = 'inline'
+        errorFieldElement.innerText = `O campo ${field.field} aceita somente números válidos!`
+        errors.push(`O campo ${field.field} aceita somente números válidos!`)
+      }
+    }
   })
 
   if (errors.length > 0) {
@@ -136,11 +146,11 @@ function registerProduct(event) {
 
 }
 
-function handleSaveData () {
+function handleSaveData() {
   let id;
   const params = getParameters()
 
-  if(!params?.id) {
+  if (!params?.id) {
     // Set Product
     let imgURL = localStorage.getItem('image-product')
     id = catalog.setCatalog({...params, 'url-image': imgURL})
@@ -162,7 +172,7 @@ function handleShow(product) {
 
   const fields = ['name', 'value']
 
-  if(product['url-image']?.length) {
+  if (product['url-image']?.length) {
     backgroundImage.style.backgroundImage = `url(${product['url-image']})`
     backgroundImage.style.backgroundSize = "cover"
     backgroundImage.style.backgroundPosition = "center"
@@ -192,4 +202,8 @@ function listProducts() {
 
     elementoPai.appendChild(cardClone)
   }
+}
+
+function verificarLetras(str, field) {
+  return /[a-zA-Z]/.test(str);
 }

@@ -5,8 +5,8 @@ body {
     align-items: center;
     gap: 30px;
     font-family: "Titillium Web", serif;
-    height: 100vh;
-    width: 100vw;
+    height: 96vh;
+    width: 96vw;
 }
 
 .header-navigation {
