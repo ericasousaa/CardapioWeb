@@ -81,8 +81,174 @@ body {
 }
 
 .card-item {
+    display: none;
     width: 250px;
     height: 250px;
     box-shadow: 1px 1px 4px 0 #CCC;
     border-radius: 15px;
+}
+
+.card-item .overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    background: linear-gradient(3deg, #B8A453 4.85%, #EAC36A 20.83%, rgba(231, 205, 102, 0.60) 30.2%, rgba(203, 182, 94, 0.10) 40.61%);
+}
+
+.container-info {
+    height: fit-content;
+    padding: 1rem 1rem .2rem 1rem;
+    color: white;
+}
+
+.card-item .name-product {
+    margin: 0;
+    font-size: 18px;
+}
+.card-item .value-product {
+    margin: 0;
+    text-align: right;
+    font-weight: 600;
+}
+
+.section-form {
+    height: 70%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+    width: 80vw;
+    max-width: 600px;
+    min-width: 300px;
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: 1px 1px 4px 0 #CCC;
+    background-color: #fbfbfb;
+}
+
+.container-form .container-img-form {
+    display: grid;
+    place-items: center;
+    height: 300px;
+    position: relative;
+    border-radius: 15px 15px 0 0;
+}
+
+.container-img-form .line-border {
+    border: 1px solid transparent;
+    border-bottom-color: #CCC;
+    width: 111%;
+    position: absolute;
+    bottom: 0;
+}
+
+.container-img-form input[type="file"] {
+    display: none;
+}
+
+.container-img-form .btn-add-image {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: 1rem;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-weight: 600;
+    color: #555;
+    transition: 100ms ease-in-out;
+    cursor: pointer;
+}
+
+.container-img-form .btn-add-image:hover {
+    background-color: #f2f2f2;
+}
+
+.container-img-form .clear-image {
+    display: none;
+    border: none;
+    background-color: transparent;
+}
+
+.container-img-form .btn-remove-image {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: 1rem;
+    border: 1px solid #CCC;
+    font-size: 14px;
+    width: 100px;
+    background-color: #f7f7f7;
+    font-weight: 600;
+    color: #555;
+    border-radius: 15px;
+    transition: 100ms ease-in-out;
+    cursor: pointer;
+}
+
+.container-img-form .btn-remove-image:hover {
+    background-color: #EEE;
+}
+
+.container-form .container-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container-inputs .input-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-area {
+    color: #555;
+    font-weight: 600;
+}
+
+.input-area input {
+    font-size: 14px;
+    padding: 10px 5px;
+    border-radius: 7px;
+    border: 1px solid #CCC;
+}
+
+.section-form .error {
+    display: none;
+    color: #EA2B1F;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.container-buttons-form {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.container-buttons-form .btn-register {
+    background-color: transparent;
+    border: 1px solid #EA2B1F;
+    border-radius: 10px;
+    padding: .6rem 1rem;
+    font-weight: 600;
+    color: #EA2B1F;
+    transition: 200ms ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 0 #CCC;
+}
+
+.container-buttons-form .btn-register:hover {
+    background-color: #EA2B1F;
+    color: #FFF;
+    box-shadow: none;
 }
