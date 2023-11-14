@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Catalogo</title>
+  <title>Registrar Produto</title>
   <link rel="stylesheet" href="./style.css"/>
   <script src="./script.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,20 +17,28 @@
   <div class="container-buttons">
     <a id="index" href="index.html" onclick="handleChangeRoute(event)">Inicio</a>
     <a id="sobre-nos" href="about.html" onclick="handleChangeRoute(event)">Sobre nós</a>
-    <a id="form" class="btn" href="form.html" onclick="handleChangeRoute(event)">
+    <a id="form" class="btn">
       Cadastrar item
     </a>
   </div>
 </nav>
-<div id="catalog" class="container-items">
-  <div id="card-product" class="card-item">
-    <div class="overlay">
-      <div class="container-info">
-        <h4 class="name-product"></h4>
-        <p class="value-product"></p>
-      </div>
+<section class="section-form">
+  <form class="container-form">
+    <div id="bg-image-form" class="container-img-form">
+
+      <span class="line-border"></span>
     </div>
-  </div>
-</div>
+    <div class="container-inputs">
+      <label class="input-area">
+        Nome do Produto
+        <input name="name" disabled placeholder="Digite o nome do produto"/>
+      </label>
+      <label class="input-area">
+        Valor do Produto
+        <input name="value" disabled placeholder="Digite o valor do produto"/>
+      </label>
+    </div>
+  </form>
+</section>
 </body>
 </html>

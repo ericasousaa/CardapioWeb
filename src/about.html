@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Catalogo</title>
-  <link rel="stylesheet" href="./style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <script src="./script.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
     rel="stylesheet">
+  <title>Sobre nós</title>
 </head>
 <body>
 <nav class="header-navigation">
   <img alt="logo" class="nav-logo" src="./public/logo.png">
   <div class="container-buttons">
-    <a id="index" href="index.html" onclick="handleChangeRoute(event)">Inicio</a>
-    <a id="sobre-nos" href="about.html" onclick="handleChangeRoute(event)">Sobre nós</a>
+    <a id="inicio" href="index.html" onclick="handleChangeRoute(event)">Inicio</a>
+    <a id="about" href="about.html" onclick="handleChangeRoute(event)">Sobre nós</a>
     <a id="form" class="btn" href="form.html" onclick="handleChangeRoute(event)">
       Cadastrar item
     </a>
   </div>
 </nav>
-<div id="catalog" class="container-items">
-  <div id="card-product" class="card-item">
-    <div class="overlay">
-      <div class="container-info">
-        <h4 class="name-product"></h4>
-        <p class="value-product"></p>
-      </div>
-    </div>
-  </div>
+<div class="sobre-nós">
+  <h2>Sobre Nós</h2>
+  <p>Somos um restaurante dedicado a oferecer pratos deliciosos e uma boa experiência para nossos clientes.</p>
+</div>
+<div class="informacões-de-contato">
+  <h2>Informações de Contato</h2>
+  <p><strong>Endereço:</strong> Rua Exemplo nfdjngd, 123, Cidade, Estado</p>
+  <p><strong>Telefone:</strong> (123) 123-1234</p>
+  <p><strong>Email:</strong> info@restaurantesomativa1.com</p>
 </div>
 </body>
 </html>
